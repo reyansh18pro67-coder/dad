@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Daddy — Happy Father's Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood-dark:#2C1610;
+    --wood:#3D1F12;
+    --wood-light:#56301c;
+    --cream:#F4ECD8;
+    --cream-dim:#d9cdae;
+    --brass:#C9963C;
+    --brass-bright:#E0B45C;
+    --terracotta:#B5562E;
+    --teal:#1F4D3D;
+    --teal-bright:#2C6B55;
+    --syahi:#1A1310;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--wood-dark);
+    color:var(--cream);
+    font-family:'Work Sans',sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+  }
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  section{
+    position:relative;
+    width:100%;
+    z-index:2;
+  }
+
+  /* ===================== TITLE BAR ===================== */
+  .title-bar{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:7vh 6vw 3vh;
+    background:
+      radial-gradient(circle at 50% 0%, var(--wood-light) 0%, var(--wood) 60%, var(--wood-dark) 100%);
+    overflow:hidden;
+    z-index:2;
+  }
+  .title-rings{
+    position:absolute;
+    top:-60px; left:50%;
+    width:min(60vw,360px); height:min(60vw,360px);
+    transform:translateX(-50%);
+    border-radius:50%;
+    z-index:0;
+    opacity:0.8;
+  }
+  .ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:1px solid rgba(201,150,60,0.18);
+  }
+  .ring.r1{inset:0;}
+  .ring.r2{inset:14%; border-color:rgba(201,150,60,0.28);}
+  .syahi-center{
+    position:absolute; inset:36%;
+    border-radius:50%;
+    background:radial-gradient(circle at 40% 35%, #2a1f17, var(--syahi) 70%);
+    box-shadow:0 0 60px 10px rgba(0,0,0,0.5) inset, 0 0 40px rgba(0,0,0,0.4);
+  }
+  .eyebrow{
+    font-family:'Work Sans',sans-serif;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    font-size:0.7rem;
+    color:var(--brass-bright);
+    margin-bottom:0.8rem;
+    z-index:2;
+    font-weight:500;
+  }
+  .title-bar h1{
+    font-size:clamp(1.9rem, 5.5vw, 3.1rem);
+    line-height:1.1;
+    color:var(--cream);
+    z-index:2;
+  }
+
+  /* ===================== QUIZ ===================== */
+  .quiz-section{
+    background:
+      radial-gradient(circle at 50% -10%, rgba(201,150,60,0.07), transparent 60%),
+      var(--wood);
+    min-height:80vh;
+    padding:6vh 6vw 12vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .quiz-section .tag{
+    font-size:0.7rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    font-weight:600;
+    margin-bottom:0.8rem;
+  }
+  .quiz-section h2{
+    font-size:clamp(1.8rem,4.5vw,2.6rem);
+    color:var(--cream);
+    max-width:20ch;
+    margin-bottom:0.6rem;
+  }
+  .quiz-section p.sub{
+    color:var(--cream-dim);
+    max-width:42ch;
+    margin-bottom:3rem;
+    line-height:1.6;
+  }
+
+  /* laces / gajra progress */
+  .progress-track{
+    display:flex;
+    gap:0.6rem;
+    margin-bottom:3rem;
+  }
+  .lace{
+    width:34px; height:8px;
+    background:rgba(244,236,216,0.15);
+    border-radius:2px;
+    transition:background 0.4s ease, transform 0.3s ease;
+  }
+  .lace.done{ background:var(--brass-bright); }
+  .lace.current{ transform:scaleY(1.6); background:var(--terracotta); }
+
+  .quiz-card{
+    width:100%;
+    max-width:640px;
+    background:linear-gradient(160deg, rgba(244,236,216,0.06), rgba(244,236,216,0.02));
+    border:1px solid rgba(201,150,60,0.25);
+    border-radius:28px;
+    padding:clamp(1.6rem,4vw,3rem);
+    position:relative;
+  }
+
+  .q-number{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--brass);
+    font-size:0.95rem;
+    margin-bottom:0.6rem;
+    display:block;
+  }
+
+  .q-text{
+    font-size:clamp(1.2rem,3vw,1.55rem);
+    color:var(--cream);
+    margin-bottom:2.2rem;
+    line-height:1.4;
+  }
+
+  .pad-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1rem;
+  }
+  @media (max-width:520px){
+    .pad-grid{ grid-template-columns:1fr; }
+  }
+
+  .pad{
+    position:relative;
+    background:radial-gradient(circle at 35% 30%, var(--wood-light), var(--wood-dark) 75%);
+    border:2px solid rgba(201,150,60,0.4);
+    border-radius:18px;
+    padding:1.3rem 1rem;
+    color:var(--cream);
+    font-family:'Work Sans',sans-serif;
+    font-size:1rem;
+    font-weight:500;
+    cursor:pointer;
+    text-align:left;
+    transition:transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .pad::before{
+    content:'';
+    position:absolute;
+    top:50%; left:0.9rem;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--brass);
+    transform:translateY(-50%);
+    opacity:0.7;
+  }
+  .pad{ padding-left:2.3rem; }
+  .pad:hover{ border-color:var(--brass-bright); transform:translateY(-2px); }
+  .pad:active{ transform:scale(0.97) translateY(0); }
+
+  .pad.correct{
+    background:radial-gradient(circle at 35% 30%, var(--teal-bright), var(--teal) 75%);
+    border-color:var(--brass-bright);
+    animation:strike 0.4s ease;
+  }
+  .pad.wrong{
+    background:radial-gradient(circle at 35% 30%, #6b2c1f, #4a1d14 75%);
+    border-color:var(--terracotta);
+    animation:shake 0.4s ease;
+  }
+  .pad.disabled{ pointer-events:none; opacity:0.55; }
+  .pad.disabled.correct, .pad.disabled.wrong{ opacity:1; }
+
+  @keyframes strike{
+    0%{ transform:scale(1); }
+    40%{ transform:scale(1.04); }
+    100%{ transform:scale(1); }
+  }
+  @keyframes shake{
+    0%,100%{ transform:translateX(0); }
+    25%{ transform:translateX(-5px); }
+    75%{ transform:translateX(5px); }
+  }
+
+  .feedback{
+    margin-top:1.6rem;
+    min-height:1.6rem;
+    font-size:0.95rem;
+    color:var(--brass-bright);
+    font-style:italic;
+    font-family:'Fraunces',serif;
+  }
+
+  .next-btn{
+    margin-top:1.8rem;
+    background:var(--brass-bright);
+    color:var(--wood-dark);
+    border:none;
+    padding:0.85rem 2.2rem;
+    border-radius:999px;
+    font-size:0.95rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(8px);
+    transition:opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+    pointer-events:none;
+    font-family:'Work Sans',sans-serif;
+  }
+  .next-btn.show{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  .next-btn:hover{ background:var(--cream); }
+
+  .score-line{
+    margin-top:1.2rem;
+    color:var(--cream-dim);
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+  }
+
+  /* ===================== SURPRISE ===================== */
+  .surprise{
+    min-height:100vh;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:8vh 6vw;
+    position:relative;
+    background:
+      radial-gradient(circle at 50% 30%, var(--wood-light) 0%, var(--wood) 50%, var(--wood-dark) 100%);
+    overflow:hidden;
+  }
+  .surprise.active{ display:flex; }
+
+  #confetti-canvas{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    pointer-events:none;
+    z-index:1;
+  }
+
+  .surprise-eyebrow{
+    z-index:3;
+    font-size:0.75rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    margin-bottom:1.2rem;
+    opacity:0;
+    animation:fadeUp 0.7s ease 0.1s forwards;
+  }
+
+  .surprise h2{
+    z-index:3;
+    font-size:clamp(2.4rem,9vw,5rem);
+    color:var(--cream);
+    line-height:1.05;
+    opacity:0;
+    animation:fadeUp 0.8s ease 0.3s forwards;
+  }
+  .surprise h2 em{ color:var(--brass-bright); font-style:italic; font-weight:500; }
+
+  .letter{
+    z-index:3;
+    max-width:560px;
+    margin-top:2.2rem;
+    background:rgba(244,236,216,0.06);
+    border:1px solid rgba(201,150,60,0.3);
+    border-radius:20px;
+    padding:clamp(1.6rem,4vw,2.6rem);
+    color:var(--cream-dim);
+    line-height:1.85;
+    font-size:1.05rem;
+    text-align:left;
+    opacity:0;
+    animation:fadeUp 0.8s ease 0.6s forwards;
+  }
+  .letter strong{ color:var(--brass-bright); font-weight:600; }
+  .letter .signoff{
+    display:block;
+    margin-top:1.4rem;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--cream);
+    font-size:1.15rem;
+  }
+
+  .tap-hint{
+    z-index:3;
+    margin-top:2.2rem;
+    font-size:0.8rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--brass);
+    opacity:0;
+    animation:fadeUp 0.8s ease 0.9s forwards;
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  footer{
+    text-align:center;
+    padding:3rem 6vw 4rem;
+    color:rgba(244,236,216,0.35);
+    font-size:0.8rem;
+    background:var(--wood-dark);
+    z-index:2;
+  }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);
+  }
+
+  button:focus-visible, .pad:focus-visible{
+    outline:3px solid var(--brass-bright);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- ============ TITLE BAR ============ -->
+<header class="title-bar">
+  <div class="title-rings" aria-hidden="true">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="syahi-center"></div>
+  </div>
+  <p class="eyebrow">Happy Father's Day, Daddy</p>
+  <h1>The Tabla Challenge</h1>
+</header>
+
+<!-- ============ QUIZ ============ -->
+<section class="quiz-section" id="quiz-section">
+  <span class="tag">Daddy's Tabla Challenge</span>
+  <h2>5 beats. 5 questions. Let's see if I learned anything.</h2>
+  <p class="sub">Tap a pad to answer — go on, strike it like you mean it.</p>
+
+  <div class="progress-track" id="progress-track" aria-hidden="true"></div>
+
+  <div class="quiz-card" id="quiz-card">
+    <!-- populated by JS -->
+  </div>
+</section>
+
+<!-- ============ SURPRISE ============ -->
+<section class="surprise" id="surprise">
+  <canvas id="confetti-canvas"></canvas>
+  <p class="surprise-eyebrow">You hit every beat</p>
+  <h2>Happy Father's Day,<br><em>Daddy.</em></h2>
+  <div class="letter">
+    <p>I know I joke about your riyaaz at 6 a.m. and the way you correct my taal before I've even finished a sentence. But the truth is, every steady thing in my life learned its rhythm from watching you.</p>
+    <p style="margin-top:1rem;">You've spent your whole life keeping time for everyone else. Today, I just want you to sit back, let someone else keep the beat for once, and know how loved you are.</p>
+    <span class="signoff">With all my love — your biggest fan in the front row.</span>
+  </div>
+  <p class="tap-hint">Tap anywhere for one more round of confetti</p>
+</section>
+
+<footer>Made with love, one taal at a time.</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ TABLA SOUND SYNTH (Web Audio API, no files needed) ============ */
+  let audioCtx = null;
+  function getCtx(){
+    if(!audioCtx){
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if(audioCtx.state === 'suspended'){ audioCtx.resume(); }
+    return audioCtx;
+  }
+
+  // Synthesize a tabla-like strike: a pitched membrane thump + a short noise burst.
+  function playTablaHit(type){
+    try{
+      const ctx = getCtx();
+      const now = ctx.currentTime;
+
+      // base frequency differs slightly per "type" for variety (dha / na / ta feel)
+      const freqMap = { dha: 180, na: 260, ta: 320, ge: 110 };
+      const baseFreq = freqMap[type] || 200;
+
+      // membrane tone (pitched body)
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(baseFreq * 1.8, now);
+      osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.6, now + 0.18);
+
+      const oscGain = ctx.createGain();
+      oscGain.gain.setValueAtTime(0.0001, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.6, now + 0.008);
+      oscGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.32);
+
+      osc.connect(oscGain);
+      oscGain.connect(ctx.destination);
+
+      // noise transient (the "slap" of the strike)
+      const bufferSize = ctx.sampleRate * 0.05;
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for(let i=0;i<bufferSize;i++){
+        data[i] = (Math.random()*2-1) * Math.pow(1 - i/bufferSize, 2);
+      }
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const noiseFilter = ctx.createBiquadFilter();
+      noiseFilter.type = 'bandpass';
+      noiseFilter.frequency.value = baseFreq * 2.2;
+      noiseFilter.Q.value = 0.8;
+
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.5, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      noise.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.34);
+      noise.start(now);
+      noise.stop(now + 0.06);
+    }catch(e){ /* audio not available, fail silently */ }
+  }
+
+  /* ============ QUIZ DATA ============ */
+  const QUESTIONS = [
+    {
+      q: "The tabla is actually a pair of two drums. What is the smaller, higher-pitched drum called?",
+      options: ["Dayan", "Bayan", "Dholak", "Pakhawaj"],
+      correct: 0,
+      hit: "ta"
+    },
+    {
+      q: "What is the black paste in the center of a tabla's drumhead called — the spot that gives it that deep, rounded tone?",
+      options: ["Masala", "Syahi", "Kalai", "Roop"],
+      correct: 1,
+      hit: "ge"
+    },
+    {
+      q: "In tabla language, rhythmic syllables like 'dha', 'na', and 'tin' are collectively known as:",
+      options: ["Raag", "Sur", "Bol", "Laya"],
+      correct: 2,
+      hit: "dha"
+    },
+    {
+      q: "A tabla rhythmic cycle — like the famous 16-beat cycle — is called a:",
+      options: ["Teentaal", "Aalap", "Gharana", "Sargam"],
+      correct: 0,
+      hit: "dha"
+    },
+    {
+      q: "The rope-and-cylinder tuning blocks around a tabla's body are used to:",
+      options: ["Decorate the drum", "Adjust the pitch", "Hold the syahi in place", "Protect it while traveling"],
+      correct: 1,
+      hit: "na"
+    }
+  ];
+
+  let current = 0;
+  let score = 0;
+  let answered = false;
+
+  const quizCard = document.getElementById('quiz-card');
+  const progressTrack = document.getElementById('progress-track');
+  const surprise = document.getElementById('surprise');
+
+  function buildProgress(){
+    progressTrack.innerHTML = '';
+    QUESTIONS.forEach((_, i) => {
+      const lace = document.createElement('div');
+      lace.className = 'lace';
+      if(i < current) lace.classList.add('done');
+      if(i === current) lace.classList.add('current');
+      progressTrack.appendChild(lace);
+    });
+  }
+
+  function renderQuestion(){
+    answered = false;
+    const item = QUESTIONS[current];
+    buildProgress();
+
+    quizCard.innerHTML = `
+      <span class="q-number">Beat ${current+1} of ${QUESTIONS.length}</span>
+      <p class="q-text">${item.q}</p>
+      <div class="pad-grid" role="group" aria-label="Answer options"></div>
+      <p class="feedback" aria-live="polite"></p>
+      <button class="next-btn" type="button">${current === QUESTIONS.length-1 ? "See your surprise" : "Next beat"}</button>
+    `;
+
+    const grid = quizCard.querySelector('.pad-grid');
+    const feedback = quizCard.querySelector('.feedback');
+    const nextBtn = quizCard.querySelector('.next-btn');
+
+    item.options.forEach((opt, idx) => {
+      const pad = document.createElement('button');
+      pad.type = 'button';
+      pad.className = 'pad';
+      pad.textContent = opt;
+      pad.addEventListener('click', () => handleAnswer(idx, pad, grid, feedback, nextBtn, item));
+      grid.appendChild(pad);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if(current < QUESTIONS.length - 1){
+        current++;
+        renderQuestion();
+        document.getElementById('quiz-section').scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        showSurprise();
+      }
+    });
+  }
+
+  function handleAnswer(idx, pad, grid, feedback, nextBtn, item){
+    if(answered) return;
+    answered = true;
+
+    playTablaHit(item.hit);
+
+    const pads = grid.querySelectorAll('.pad');
+    pads.forEach((p, i) => {
+      p.classList.add('disabled');
+      if(i === item.correct) p.classList.add('correct');
+    });
+
+    if(idx === item.correct){
+      score++;
+      feedback.textContent = "Right on the beat!";
+    } else {
+      pad.classList.add('wrong');
+      feedback.textContent = "Not quite — but you've still got rhythm in other ways.";
+    }
+
+    nextBtn.classList.add('show');
+  }
+
+  function showSurprise(){
+    document.getElementById('quiz-section').style.display = 'none';
+    surprise.classList.add('active');
+    surprise.scrollIntoView({behavior:'smooth'});
+    launchConfetti();
+    surprise.addEventListener('click', launchConfetti);
+  }
+
+  /* ============ CONFETTI ============ */
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx2d = canvas.getContext('2d');
+  let confettiPieces = [];
+  let confettiRunning = false;
+
+  function resizeCanvas(){
+    canvas.width = surprise.offsetWidth;
+    canvas.height = surprise.offsetHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+
+  const CONFETTI_COLORS = ['#C9963C','#E0B45C','#B5562E','#1F4D3D','#2C6B55','#F4ECD8'];
+
+  function launchConfetti(){
+    resizeCanvas();
+    const count = 140;
+    for(let i=0;i<count;i++){
+      confettiPieces.push({
+        x: Math.random()*canvas.width,
+        y: -20 - Math.random()*canvas.height*0.3,
+        w: 6 + Math.random()*6,
+        h: 8 + Math.random()*10,
+        color: CONFETTI_COLORS[Math.floor(Math.random()*CONFETTI_COLORS.length)],
+        speedY: 2 + Math.random()*3,
+        speedX: (Math.random()-0.5)*2,
+        rotation: Math.random()*360,
+        rotationSpeed: (Math.random()-0.5)*10,
+        life: 0,
+        maxLife: 220 + Math.random()*80
+      });
+    }
+    if(!confettiRunning){
+      confettiRunning = true;
+      requestAnimationFrame(animateConfetti);
+    }
+  }
+
+  function animateConfetti(){
+    ctx2d.clearRect(0,0,canvas.width,canvas.height);
+    confettiPieces.forEach(p => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      p.rotation += p.rotationSpeed;
+      p.life++;
+
+      ctx2d.save();
+      ctx2d.translate(p.x, p.y);
+      ctx2d.rotate(p.rotation * Math.PI/180);
+      ctx2d.fillStyle = p.color;
+      ctx2d.globalAlpha = Math.max(0, 1 - p.life/p.maxLife);
+      ctx2d.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx2d.restore();
+    });
+
+    confettiPieces = confettiPieces.filter(p => p.life < p.maxLife && p.y < canvas.height + 40);
+
+    if(confettiPieces.length > 0){
+      requestAnimationFrame(animateConfetti);
+    } else {
+      confettiRunning = false;
+      ctx2d.clearRect(0,0,canvas.width,canvas.height);
+    }
+  }
+
+  /* ============ INIT ============ */
+  renderQuestion();
+})();
+</script>
+</body>
+</html>
